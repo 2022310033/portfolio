@@ -1,0 +1,4 @@
+Color Palette:
+
+#98c1d9 - background color
+#3d5a80 - div color
