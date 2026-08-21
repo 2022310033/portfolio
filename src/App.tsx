@@ -12,8 +12,9 @@ export default function App(){
 
           <div className="flex items-center justify-between">
             <span className="font-bold">Portfolio</span>
+
             <div className="space-x-3">
-              <Link to="/"
+              <Link to="/portfolio"
                 className="inline-block transition-transform duration-150 hover:scale-105 hover:text-amber-50 hover:[-webkit-text-stroke:0.35px_currentColor]">
                 Card
               </Link>
@@ -34,7 +35,7 @@ export default function App(){
 
         <div className="flex-1 flex items-center justify-center overflow-hidden">
           <Routes>
-            <Route path="/" element={<ProgCard />} />
+            <Route path="/portfolio" element={<ProgCard />} />
             <Route path="/more" element={<Information />} />
           </Routes>
         </div>
