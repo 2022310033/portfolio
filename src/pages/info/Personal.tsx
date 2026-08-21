@@ -8,7 +8,7 @@ export default function Personal() {
     return(
         <>
         <div className="mt-2 text-gray-700 p-4">
-            <div className="flex items-center justify-start width-full">
+            <div className="flex pb-4 items-center justify-start width-full">
 
                 <img className="h-50 w-50 rounded-full border-gray-700 border-2" src={ReactLogo2} alt="Profile Image" />
 
@@ -19,7 +19,7 @@ export default function Personal() {
                 </div>
             </div>
 
-        <div className="my-2 h-0.5 w-[98%] bg-gray-700" />
+        
 
         <div className="flex items-center justify-center w-full">
 

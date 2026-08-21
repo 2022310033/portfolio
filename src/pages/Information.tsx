@@ -3,6 +3,7 @@ import projectsIcon from '/svg/folder.svg';
 import personalIcon from '/svg/personal.svg';
 import contactIcon from '/svg/contact.svg';
 import Personal from "./info/Personal";
+import Projects from "./info/Projects";
 
 export default function Information() {
 
@@ -120,9 +121,7 @@ export default function Information() {
                         )}
 
                         {open === "Projects" && (
-                            <p className="mt-2 text-gray-700">
-                                Projects information placeholder. Add your featured projects, technologies, or links here.
-                            </p>
+                            <Projects />   
                         )}
 
                         {open === "Contact" && (
