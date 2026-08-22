@@ -4,6 +4,7 @@ import personalIcon from '/svg/personal.svg';
 import contactIcon from '/svg/contact.svg';
 import Personal from "./info/Personal";
 import Projects from "./info/Projects";
+import Contact from "./contact/Contact";
 
 export default function Information() {
 
@@ -125,9 +126,7 @@ export default function Information() {
                         )}
 
                         {open === "Contact" && (
-                            <p className="mt-2 text-gray-700">
-                                Contact information placeholder. Add your email, social links, or contact details here.
-                            </p>
+                            <Contact />
                         )}
 
 
