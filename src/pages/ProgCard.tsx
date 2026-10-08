@@ -10,7 +10,7 @@ export default function ProgCard(){
         <div className="flex-1 flex items-center justify-center">
 
           <div 
-            className="w-170 h-100 bg-[#293241] rounded-xl flex flex-col border-[3px] border-black cursor-pointer relative"
+            className="relative flex h-80 aspect-auto w-[min(42.5rem,calc(100vw-2rem))] max-w-full cursor-pointer flex-col rounded-xl border-[3px] border-black bg-[#293241] sm:h-auto sm:aspect-[1.7]"
             style={{
               perspective: '1000px',
               transformStyle: 'preserve-3d',
@@ -19,23 +19,23 @@ export default function ProgCard(){
             }}
             onClick={() => setIsFlipped(!isFlipped)}>
                 
-              <div className="w-full px-4 py-3 flex items-center justify-center text-[#ee6c4d] h-24 border-b-2 border-black bg-[#232933]" style={{ backfaceVisibility: 'hidden' }}>
-                  <span className="font-bold tracking-widest text-3xl">PROGRAMMER CARD</span>
+                <div className="flex h-16 w-full items-center justify-center border-b-2 border-black bg-[#232933] px-3 py-2 text-[#ee6c4d] sm:h-24 sm:px-4 sm:py-3" style={{ backfaceVisibility: 'hidden' }}>
+                  <span className="text-center text-lg font-bold tracking-widest sm:text-3xl">PROGRAMMER CARD</span>
               </div>
 
-            <div className="flex-1 flex items-center justify-center px-4 py-6" style={{ backfaceVisibility: 'hidden' }}>
-                <div className="flex items-center space-x-4">
+              <div className="flex flex-1 items-center justify-center overflow-hidden px-3 py-4 sm:px-4 sm:py-6" style={{ backfaceVisibility: 'hidden' }}>
+                <div className="flex min-w-0 flex-col items-center gap-3 text-center sm:flex-row sm:gap-4 sm:text-left">
 
                     <img
                         src= { ReactLogo2 }
                         alt="Profile image"
-                        className="h-50 w-50 rounded-4xl border-2 border-black cursor-pointer"
+                    className="h-28 w-28 shrink-0 rounded-4xl border-2 border-black sm:h-50 sm:w-50"
                     />
 
-                    <div className="flex flex-col text-[#ee6c4d]">
-                        <h2 className="text-5xl font-serif my-1">Hello! I am</h2>
-                        <h2 className="text-5xl font-extrabold font-serif text-amber-50 my-1">Geric Concon</h2>
-                        <h2 className="text-2xl font-serif my-1">A <span className="underline decoration-2 underline-offset-4">Junior</span> Programmer</h2>
+                  <div className="flex min-w-0 flex-col text-[#ee6c4d]">
+                    <h2 className="my-1 text-2xl font-serif sm:text-5xl">Hello! I am</h2>
+                    <h2 className="my-1 text-2xl font-extrabold font-serif text-amber-50 sm:text-5xl">Geric Concon</h2>
+                    <h2 className="my-1 text-base font-serif sm:text-2xl">A <span className="underline decoration-2 underline-offset-4">Junior</span> Programmer</h2>
                     </div>
                 </div>
             </div>
@@ -43,27 +43,27 @@ export default function ProgCard(){
 
 
             <div 
-              className="absolute inset-0 w-170 h-100 bg-[#293241] rounded-xl flex flex-col border-[3px] border-black p-6"
+              className="absolute inset-0 flex h-full w-full flex-col rounded-xl border-[3px] border-black bg-[#293241] p-3 sm:p-6"
               style={{
                 backfaceVisibility: 'hidden',
                 transform: 'rotateY(180deg)',
               }}>
               
-              <div className="absolute top-0 left-0 right-0 px-4 py-3 flex items-center justify-center text-[#ee6c4d] h-24 border-b-2 border-black bg-[#232933]" style={{ backfaceVisibility: 'hidden' }}>
+              <div className="absolute left-0 right-0 top-0 flex h-16 items-center justify-center border-b-2 border-black bg-[#232933] px-3 py-2 text-[#ee6c4d] sm:h-24 sm:px-4 sm:py-3" style={{ backfaceVisibility: 'hidden' }}>
               </div>
 
-              <div className="flex-1 flex items-start justify-start text-[#ee6c4d] text-left mt-24">
+              <div className="mt-16 flex flex-1 items-start justify-start overflow-y-auto text-left text-sm text-[#ee6c4d] sm:mt-24 sm:text-2xl">
                 <div>
-                    <h2 className="text-2xl font-bold font-serif my-1">Address: <span className="font-normal">Porac, Pampanga, Philippines</span></h2>
-                    <h2 className="text-2xl font-bold font-serif my-1">Birth Date: <span className="font-normal">November 20, 2002</span></h2>
-                    <h2 className="text-2xl font-bold font-serif my-1">Languages: <span className="font-normal">English, Tagalog and Kapampangan</span></h2>
-                    <h2 className="text-2xl font-bold font-serif my-1">Email: <span className="font-normal">concongeric@gmail.com</span></h2>
-                    <h2 className="text-2xl font-bold font-serif my-1">Phone: <span className="font-normal">+63 935 914 2574</span></h2>
+                    <h2 className="my-1 text-base font-bold font-serif sm:text-2xl">Address: <span className="font-normal">Porac, Pampanga, Philippines</span></h2>
+                    <h2 className="my-1 text-base font-bold font-serif sm:text-2xl">Birth Date: <span className="font-normal">November 20, 2002</span></h2>
+                    <h2 className="my-1 text-base font-bold font-serif sm:text-2xl">Languages: <span className="font-normal">English, Tagalog and Kapampangan</span></h2>
+                    <h2 className="my-1 text-base font-bold font-serif sm:text-2xl">Email: <span className="font-normal">concongeric@gmail.com</span></h2>
+                    <h2 className="my-1 text-base font-bold font-serif sm:text-2xl">Phone: <span className="font-normal">+63 935 914 2574</span></h2>
                 </div>
               </div>
 
               
-              <div className="absolute bottom-0 left-0 right-0 h-16 flex items-end justify-center " style={{ backfaceVisibility: 'hidden' }}>
+              <div className="absolute bottom-0 left-0 right-0 flex h-12 items-end justify-center sm:h-16" style={{ backfaceVisibility: 'hidden' }}>
                 <BarCode />
               </div>
             </div>
