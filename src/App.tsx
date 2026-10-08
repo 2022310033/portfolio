@@ -4,9 +4,9 @@ import { Routes, Route, Link } from 'react-router-dom';
 
 export default function App(){
   return(
-    <div className="min-h-screen flex items-center justify-center">
+    <div className="flex h-dvh w-full items-center justify-center overflow-hidden">
 
-      <div className="w-250 h-180 flex flex-col rounded-xl border-4 border-[#3d5a80] bg-[#98c1d9] shadow-md">
+      <div className="flex h-dvh w-full flex-col bg-[#98c1d9] md:h-[min(100dvh,45rem)] md:w-[calc(100vw-2rem)] md:max-w-250 md:rounded-xl md:border-4 md:border-[#3d5a80] md:shadow-md">
 
         <nav className="w-full px-4 py-3 bg-[#3d5a80] text-amber-50 rounded-t-sm">
 
@@ -33,7 +33,7 @@ export default function App(){
 
 
 
-        <div className="flex-1 flex items-center justify-center overflow-hidden">
+        <div className="flex min-h-0 flex-1 items-center justify-center overflow-hidden">
           <Routes>
             <Route path="/portfolio" element={<ProgCard />} />
             <Route path="/more" element={<Information />} />
