@@ -29,7 +29,7 @@ export default function ProjectCard({ images, title, description }: ProjectCardP
                 <img
                     src={safeImages[activeIndex].src}
                     alt={safeImages[activeIndex].alt}
-                    className="h-52 w-full object-center"
+                    className="h-48 w-full object-contain object-center sm:h-64"
                 />
 
                 {safeImages.length > 1 && (

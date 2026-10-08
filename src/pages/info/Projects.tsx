@@ -17,11 +17,28 @@ import Q2 from "/projects/quiz_app/q2.png";
 import Q3 from "/projects/quiz_app/q3.png";
 import Q4 from "/projects/quiz_app/q4.png";
 
+import T1 from "/projects/thesis/t1.png";
+import T2 from "/projects/thesis/t2.png";
+import T3 from "/projects/thesis/t3.png";
+import T4 from "/projects/thesis/t4.png";
+import T5 from "/projects/thesis/t5.png";
+
 export default function Projects() {
 
     const languages = ["HTML", "CSS", "JavaScript", "TypeScript", "Python", "C++", "Java", "ReactJS", "Laravel", "Tailwind and Bootstrap"];
     
     const projects = [
+        {
+            images: [
+                { src: T1, alt: "Thesis project sign-in screen" },
+                { src: T2, alt: "Thesis project OCR review and application confirmation screen" },
+                { src: T3, alt: "Thesis project eligible students ranking screen" },
+                { src: T4, alt: "Thesis project grade management screen" },
+                { src: T5, alt: "Thesis project class management screen" },
+            ],
+            title: "Thesis Project",
+            description: "A web-based student and class management system featuring grade tracking, OCR-assisted application review, student rankings, and class management.",
+        },
         {
             images: [
                 { src: Att_1, alt: "Attendance tracker image 1" },
@@ -76,10 +93,10 @@ export default function Projects() {
 
     return(
     <>
-<div className="flex-col items-center justify-center w-full p-3 mt-1">
+<div className="mt-1 flex min-h-0 flex-1 flex-col items-center justify-start w-full p-3">
 
 
-    <div className="flex flex-col justify-start w-full">
+    <div className="flex shrink-0 flex-col justify-start w-full">
 
                 <h2 className="font-extrabold font-serif text-gray-700 ">CODING PROFICIENCY</h2>
                 
@@ -87,7 +104,7 @@ export default function Projects() {
                     {languages.map((language) => (
                         <div
                             key={language}
-                            className="rounded-lg border-2 border-gray-700 bg-amber-100 px-4 py-2 text-sm font-semibold text-gray-700 select-none transition-colors duration-150 hover:bg-gray-700 hover:text-amber-100">
+                            className="rounded-lg border-2 border-gray-700 bg-amber-100 px-2 py-1.5 text-xs font-semibold text-gray-700 select-none transition-colors duration-150 hover:bg-gray-700 hover:text-amber-100 sm:px-4 sm:py-2 sm:text-sm">
                             {language}
                         </div>
                     ))}
@@ -98,7 +115,7 @@ export default function Projects() {
 
 
 
-            <div className={`flex flex-col justify-start pr-2 w-full max-h-105 overflow-y-auto ${scrollbarStyle}`}>
+            <div className={`flex min-h-0 flex-1 flex-col justify-start pr-2 w-full overflow-y-auto ${scrollbarStyle}`}>
 
                 <h2 className="font-extrabold font-serif text-gray-700 ">PROJECTS</h2>
 

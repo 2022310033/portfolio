@@ -31,8 +31,8 @@ export default function Information() {
             const modalHeight = modal.offsetHeight;
 
             setPosition({
-                x: Math.max(20, (parentWidth - modalWidth) / 2),
-                y: Math.max(20, (parentHeight - modalHeight) / 2),
+                x: Math.max(8, (parentWidth - modalWidth) / 2),
+                y: Math.max(8, (parentHeight - modalHeight) / 2),
             });
         });
 
@@ -40,11 +40,18 @@ export default function Information() {
     }, [open]);
 
     useEffect(() => {
-        const handleMouseMove = (event: MouseEvent) => {
+        const handlePointerMove = (event: PointerEvent) => {
             if (!dragging) return;
+            const parent = parentRef.current;
+            const modal = modalRef.current;
+            if (!parent || !modal) return;
+
+            const bounds = parent.getBoundingClientRect();
+            const maxX = Math.max(8, parent.clientWidth - modal.offsetWidth - 8);
+            const maxY = Math.max(8, parent.clientHeight - modal.offsetHeight - 8);
             setPosition({
-                x: event.clientX - dragOffset.current.x,
-                y: event.clientY - dragOffset.current.y,
+                x: Math.min(maxX, Math.max(8, event.clientX - bounds.left - dragOffset.current.x)),
+                y: Math.min(maxY, Math.max(8, event.clientY - bounds.top - dragOffset.current.y)),
             });
         };
 
@@ -52,12 +59,12 @@ export default function Information() {
             setDragging(false);
         };
 
-        window.addEventListener("mousemove", handleMouseMove);
-        window.addEventListener("mouseup", handleMouseUp);
+        window.addEventListener("pointermove", handlePointerMove);
+        window.addEventListener("pointerup", handleMouseUp);
 
         return () => {
-            window.removeEventListener("mousemove", handleMouseMove);
-            window.removeEventListener("mouseup", handleMouseUp);
+            window.removeEventListener("pointermove", handlePointerMove);
+            window.removeEventListener("pointerup", handleMouseUp);
         };
     }, [dragging]);
 
@@ -66,24 +73,24 @@ export default function Information() {
 
     return(
 
-        <div ref={parentRef} className="relative flex-1 self-stretch w-full h-full flex items-center justify-center px-4 py-6 bg-[#98c1d9] gap-4">
+        <div ref={parentRef} className="relative flex min-h-0 flex-1 self-stretch w-full flex-nowrap items-center justify-center gap-2 overflow-y-auto bg-[#98c1d9] px-4 py-4 sm:gap-4 sm:py-6">
             
             
-            <div onClick={() => setOpen("Personal")} className="group flex h-40 w-40 cursor-pointer flex-col items-center justify-center rounded-xl bg-amber-50 transition-shadow duration-150 hover:shadow-2xl">
-                <img src={personalIcon} alt="Personal Icon" className="h-16 w-16 transition-transform duration-150 group-hover:scale-110" />
+            <button type="button" onClick={() => setOpen("Personal")} className="group flex h-auto aspect-square w-[clamp(3.5rem,20vw,10rem)] shrink-0 cursor-pointer flex-col items-center justify-center rounded-xl bg-amber-50 transition-shadow duration-150 hover:shadow-2xl sm:w-40">
+                <img src={personalIcon} alt="" className="h-[clamp(1.75rem,9vw,4rem)] w-[clamp(1.75rem,9vw,4rem)] transition-transform duration-150 group-hover:scale-110 sm:h-16 sm:w-16" />
                 <span className="font-serif transition-transform duration-150 group-hover:scale-105 group-hover:font-bold">Personal</span>
-            </div>
+            </button>
 
-            <div onClick={() => setOpen("Projects")} className="group flex h-40 w-40 cursor-pointer flex-col items-center justify-center rounded-xl bg-amber-50 transition-shadow duration-150 hover:shadow-2xl">
-                <img src={projectsIcon} alt="Projects Icon" className="h-16 w-16 transition-transform duration-150 group-hover:scale-110" />
+            <button type="button" onClick={() => setOpen("Projects")} className="group flex h-auto aspect-square w-[clamp(3.5rem,20vw,10rem)] shrink-0 cursor-pointer flex-col items-center justify-center rounded-xl bg-amber-50 transition-shadow duration-150 hover:shadow-2xl sm:w-40">
+                <img src={projectsIcon} alt="" className="h-[clamp(1.75rem,9vw,4rem)] w-[clamp(1.75rem,9vw,4rem)] transition-transform duration-150 group-hover:scale-110 sm:h-16 sm:w-16" />
                 <span className="font-serif transition-transform duration-150 group-hover:scale-105 group-hover:font-bold">Projects</span>
-            </div>
+            </button>
 
 
-            <div onClick={() => setOpen("Contact")} className="group flex h-40 w-40 cursor-pointer flex-col items-center justify-center rounded-xl bg-amber-50 transition-shadow duration-150 hover:shadow-2xl">
-                <img src={contactIcon} alt="Contact Icon" className="h-16 w-16 transition-transform duration-150 group-hover:scale-110" />
+            <button type="button" onClick={() => setOpen("Contact")} className="group flex h-auto aspect-square w-[clamp(3.5rem,20vw,10rem)] shrink-0 cursor-pointer flex-col items-center justify-center rounded-xl bg-amber-50 transition-shadow duration-150 hover:shadow-2xl sm:w-40">
+                <img src={contactIcon} alt="" className="h-[clamp(1.75rem,9vw,4rem)] w-[clamp(1.75rem,9vw,4rem)] transition-transform duration-150 group-hover:scale-110 sm:h-16 sm:w-16" />
                 <span className="font-serif transition-transform duration-150 group-hover:scale-105 group-hover:font-bold">Contact</span>
-            </div>
+            </button>
 
 
 
@@ -99,7 +106,7 @@ export default function Information() {
                         
                     <div
                         ref={modalRef}
-                        className="flex flex-col absolute w-150 rounded-xl bg-amber-50 shadow-2xl overflow-hidden"
+                        className="absolute flex h-[calc(100%-2.5rem)] max-h-[calc(100%-2.5rem)] w-[calc(100%-3rem)] max-w-150 flex-col overflow-hidden rounded-xl bg-amber-50 shadow-2xl"
                         style={{
                             left: position.x,
                             top: position.y,
@@ -107,12 +114,14 @@ export default function Information() {
                         onClick={(e) => e.stopPropagation()}>
 
                         <div
-                            className="flex h-8 cursor-move items-center rounded-t-xl bg-[#293241] px-4 font-bold text-white select-none"
-                            onMouseDown={(event) => {
+                            className="flex h-8 shrink-0 cursor-move touch-none items-center rounded-t-xl bg-[#293241] px-4 font-bold text-white select-none"
+                            onPointerDown={(event) => {
+                                const bounds = parentRef.current?.getBoundingClientRect();
+                                if (!bounds) return;
                                 setDragging(true);
                                 dragOffset.current = {
-                                    x: event.clientX - position.x,
-                                    y: event.clientY - position.y,
+                                    x: event.clientX - bounds.left - position.x,
+                                    y: event.clientY - bounds.top - position.y,
                                 };}}>
                             {open}
                         </div>
